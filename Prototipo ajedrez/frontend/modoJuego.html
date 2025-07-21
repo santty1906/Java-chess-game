@@ -2,45 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prototipo ajedrez</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modoJuego.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
 </head>
 <body>
-  <div class="topbar">
-      <nav class="main-nav">
-        <div class="nav-item">
-          Santiago Lopez
-          <div class="nav-subtext">20-70-7965</div>
-        </div>
-        <div class="nav-item">
-          Antonio Gonzalez
-          <div class="nav-subtext">20-70-7965</div>
-        </div>
-        <div class="nav-item">
-          Gabriel Ortega
-          <div class="nav-subtext">20-70-7965</div>
-        </div>
-        <div class="nav-item">
-          Diego Perez
-          <div class="nav-subtext">20-70-7965</div>
-        </div>
-      </nav>
-  </div>
+  
 
   <main>
-    <section id="incio">
-      <div class="inicio">
-        <a href="jugarAmigo.html">Jugar con un amigo</a>
-        <a href="jugarBot.html">Jugar contra un bot</a>
-      </div>
+    <section id="inicio">
+      <div class="game-mode-container">
+        <h1>Selecciona tu modo de juego</h1>
+        <div class="game-buttons">
+          <button class="game-btn" onclick="playWithFriend()">
+            <span class="btn-icon">👥</span>
+            Jugar con un amigo
+          </button>
+          <button class="game-btn" onclick="showBotOptions()">
+            <span class="btn-icon">🤖</span>
+            Jugar contra un bot
+          </button>
+          <button class="home-btn" onclick="goToIndex()">
+            <span class="btn-icon">🏠</span>
+            Volver al inicio
+          </button>
+        </div>
+        
+        
+        <!-- Bot difficulty selection (initially hidden) -->
+        <div id="bot-difficulty" class="bot-difficulty-container" style="display: none;">
+          <h2>Selecciona el nivel de dificultad</h2>
+          <div class="difficulty-buttons">
+            <button class="difficulty-btn" onclick="playWithBot('principiante')">
+              <span class="difficulty-icon">🟢</span>
+              Principiante
+              <small>Nivel fácil</small>
+            </button>
+            <button class="difficulty-btn" onclick="playWithBot('intermedio')">
+              <span class="difficulty-icon">🟡</span>
+              Intermedio
+              <small>Nivel medio</small>
+            </button>
+        
+          </div>
+          <button class="back-btn" onclick="hideBotOptions()">Volver</button>
+        </div>
+        
+        
     </section>
   </main>
   <footer>&copy; 2025 Chess.</footer>
-  <script> src="main.js"</script>
+  <script src="main.js"></script>
 </body>
 </html>
