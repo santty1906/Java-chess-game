@@ -1,0 +1,137 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
+public class ServidorAjedrez {
+   private static final int PUERTO = 8080;
+   private static Map<String, String> partidas = new HashMap();
+
+   public ServidorAjedrez() {
+   }
+
+   public static void main(String[] var0) throws IOException {
+      ServerSocket var1 = new ServerSocket(8080);
+      System.out.println("\ud83c\udfaf Servidor de Ajedrez iniciado en puerto 8080");
+      System.out.println("\ud83d\udcf1 Abre: http://localhost:8080");
+      System.out.println("⏹️  Presiona Ctrl+C para detener");
+
+      while(true) {
+         Socket var2 = var1.accept();
+         (new Thread(() -> {
+            manejarCliente(var2);
+         })).start();
+      }
+   }
+
+   private static void manejarCliente(Socket var0) {
+      try {
+         BufferedReader var1 = new BufferedReader(new InputStreamReader(var0.getInputStream()));
+
+         label81: {
+            try {
+               PrintWriter var2 = new PrintWriter(var0.getOutputStream());
+
+               label65: {
+                  try {
+                     String var3 = var1.readLine();
+                     if (var3 != null) {
+                        String[] var4 = var3.split(" ");
+                        String var5 = var4[0];
+                        String var6 = var4[1];
+                        System.out.println("\ud83d\udce5 " + var5 + " " + var6);
+                        String var7 = "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Allow-Methods: GET, POST, OPTIONS\r\nAccess-Control-Allow-Headers: Content-Type\r\n";
+                        if (var6.equals("/")) {
+                           servirArchivo(var2, "demo.html", "text/html", var7);
+                        } else if (var6.equals("/style.css")) {
+                           servirArchivo(var2, "style.css", "text/css", var7);
+                        } else if (var6.equals("/script.js")) {
+                           servirArchivo(var2, "script.js", "application/javascript", var7);
+                        } else {
+                           String var8;
+                           if (var6.equals("/api/estado")) {
+                              var8 = "{ \"tablero\": \"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR\", \"turno\": \"blancas\" }";
+                              enviarRespuesta(var2, var8, "application/json", var7);
+                           } else if (var6.equals("/api/mover")) {
+                              var8 = "{ \"exito\": true, \"mensaje\": \"Movimiento realizado\" }";
+                              enviarRespuesta(var2, var8, "application/json", var7);
+                           } else {
+                              var2.println("HTTP/1.1 404 Not Found\r\n\r\n<h1>404 - Página no encontrada</h1>");
+                           }
+                        }
+                        break label65;
+                     }
+                  } catch (Throwable var11) {
+                     try {
+                        var2.close();
+                     } catch (Throwable var10) {
+                        var11.addSuppressed(var10);
+                     }
+
+                     throw var11;
+                  }
+
+                  var2.close();
+                  break label81;
+               }
+
+               var2.close();
+            } catch (Throwable var12) {
+               try {
+                  var1.close();
+               } catch (Throwable var9) {
+                  var12.addSuppressed(var9);
+               }
+
+               throw var12;
+            }
+
+            var1.close();
+            return;
+         }
+
+         var1.close();
+      } catch (Exception var13) {
+         System.err.println("❌ Error: " + var13.getMessage());
+      }
+   }
+
+   private static void servirArchivo(PrintWriter var0, String var1, String var2, String var3) {
+      try {
+         BufferedReader var4 = new BufferedReader(new FileReader(var1));
+
+         try {
+            var0.println(var3 + "Content-Type: " + var2 + "\r\n");
+
+            String var5;
+            while((var5 = var4.readLine()) != null) {
+               var0.println(var5);
+            }
+         } catch (Throwable var8) {
+            try {
+               var4.close();
+            } catch (Throwable var7) {
+               var8.addSuppressed(var7);
+            }
+
+            throw var8;
+         }
+
+         var4.close();
+      } catch (IOException var9) {
+         var0.println("HTTP/1.1 404 Not Found\r\n\r\n<h1>Archivo no encontrado: " + var1 + "</h1>");
+      }
+
+   }
+
+   private static void enviarRespuesta(PrintWriter var0, String var1, String var2, String var3) {
+      var0.println(var3 + "Content-Type: " + var2 + "\r\n");
+      var0.println(var1);
+   }
+}
