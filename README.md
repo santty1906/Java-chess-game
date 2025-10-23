@@ -1,180 +1,195 @@
-# ♔ Chess Game - Juego de Ajedrez Completo
+Guía del Usuario - Ajedrez Java
+Inicio Rápido
+Primer Uso
+Ejecutar el juego: Haz doble clic en Main.java o ejecuta desde tu IDE
+Seleccionar modo: Elige entre "Jugador vs Jugador" o "Jugador vs Bot"
+Inicia la partida: El tablero se abrirá listo para comenzar
+Controles Básicos
+Clic izquierdo: Seleccionar pieza / Mover a casilla
+Clic en pieza seleccionada: Cancelar selección
+Borde azul: Indica la pieza actualmente seleccionada
+Modos de Juego
+Jugador vs Jugador (1v1)
+Turnos alternados: Las blancas siempre comienzan
+Control total: Ambos jugadores controlan sus piezas
+Ideal para: Partidas locales entre amigos
+Jugador vs Bot (PvE)
+Tú juegas: Siempre con las piezas blancas
+Bot juega: Automáticamente con las piezas negras
+Nivel: Principiante (perfecto para aprender)
+Respuesta: El bot piensa ~0.5 segundos antes de mover
+Cómo Mover las Piezas
+Movimiento Básico
+Haz clic en la pieza que quieres mover
+La pieza se resalta con un borde azul
+Haz clic en la casilla de destino
+Si el movimiento es válido, la pieza se mueve
+Si es inválido, aparece un mensaje de error
+Capturas
+Automático: Si hay una pieza enemiga en la casilla destino, se captura automáticamente
+Visual: La pieza capturada desaparece del tablero
+Cancelar Movimiento
+Clic en la misma pieza: Cancela la selección actual
+Clic en otra pieza tuya: Cambia la selección
+Reglas Especiales
+Enroque
+El enroque es un movimiento especial que involucra al rey y una torre.
 
-Un juego de ajedrez completamente funcional con servidor Java y frontend HTML/CSS/JavaScript.
+¿Cómo hacer enroque?
+Selecciona tu rey (debe estar en su posición inicial)
+Mueve el rey 2 casillas hacia la torre con la que quieres enrocar
+Derecha: Enroque corto (con torre del lado del rey)
+Izquierda: Enroque largo (con torre del lado de la reina)
+Condiciones para el enroque:
+El rey no se ha movido nunca
+La torre no se ha movido nunca
+No hay piezas entre el rey y la torre
+El rey no está en jaque
+El rey no pasa por casillas atacadas
+Ejemplo Visual:
+Antes del enroque corto:
+...R...K  (R=Torre, K=Rey)
 
-## 🎯 Características Principales
+Después del enroque corto:
+.....RK.  (Rey y torre intercambian posiciones)
+Coronación de Peones
+¿Cuándo sucede?
+Cuando tu peón llega al final del tablero (fila 1 para blancas, fila 8 para negras)
+¿Cómo elegir la pieza?
+Mueve tu peón a la última fila
+Aparece un menú con 4 opciones:
+Reina (recomendado - más poderosa)
+Torre (movimiento horizontal/vertical)
+Alfil (movimiento diagonal)
+Caballo (movimiento en L)
+Selecciona tu elección y haz clic en "OK"
+Tu peón se transforma en la pieza elegida
+Estrategia:
+Reina: La mejor opción en el 95% de los casos
+Caballo: Útil para jaque mate específicos
+Torre/Alfil: Ocasionalmente útiles en finales especiales
+Situaciones de Jaque
+¿Qué es jaque?
+Tu rey está siendo atacado por una pieza enemiga
+Aparece un mensaje: "¡Jaque al jugador [color]!"
+Debes salir del jaque en tu próximo movimiento
+¿Cómo salir del jaque?
+Tienes 3 opciones:
 
-- ✅ **Juego completo de ajedrez** con todas las reglas implementadas
-- 🤖 **Inteligencia artificial** con dos niveles de dificultad
-- � **Modo multijugador** para jugar con amigos
-- 🌐 **Arquitectura cliente-servidor** con API REST
-- 🎨 **Interfaz moderna** y responsive
-- ⚡ **Tiempo real** - movimientos instantáneos
+Mover el rey a una casilla segura
+Bloquear el ataque con otra pieza
+Capturar la pieza que está dando jaque
+Jaque Mate
+¿Qué es?: No puedes salir del jaque de ninguna manera
+Resultado: Has perdido la partida
+El juego termina automáticamente
+Jugando Contra el Bot
+Características del Bot
+Nivel: Principiante amigable
+Comportamiento: Comete errores realistas
+Velocidad: Responde en ~0.5 segundos
+Estilo: Movimientos variados y algo impredecibles
+¿Qué hace bien el Bot?
+Escapa cuando su rey está en jaque
+Busca capturas obvias
+Mueve peones hacia adelante
+Desarrolla piezas gradualmente
+¿Qué errores comete?
+A veces ignora amenazas
+No siempre hace los mejores movimientos
+Puede ser "distraído" (20% del tiempo)
+No planifica a largo plazo
+Consejos para ganarle al Bot:
+Desarrolla tus piezas rápidamente
+Protege tu rey con enroque temprano
+Busca capturas que el bot pueda pasar por alto
+Controla el centro del tablero
+Ten paciencia - el bot cometerá errores
+Interfaz Visual
+Colores del Tablero
+Casillas claras: Beige claro (#F0D9B5)
+Casillas oscuras: Marrón (#B58863)
+Pieza seleccionada: Borde azul grueso
+Piezas
+Gráficos claros: Cada pieza tiene su imagen distintiva
+Tamaño consistente: 60x60 píxeles, perfectamente escaladas
+Fácil identificación: Colores y formas tradicionales
+Solución de Problemas
+"No puedo mover mi pieza"
+Posibles causas:
 
-## �🚀 Cómo ejecutar el proyecto
+No es tu turno
+Movimiento inválido para esa pieza
+Tu rey quedaría en jaque
+Hay una pieza bloqueando el camino
+Solución: Verifica las reglas de la pieza y asegúrate de que sea tu turno
 
-### 1. Iniciar el Servidor Java
+"El enroque no funciona"
+Posibles causas:
 
-1. **Navega a la carpeta del backend:**
-   ```bash
-   cd "Prototipo ajedrez/backend"
-   ```
+El rey o la torre ya se movieron
+Hay piezas en el camino
+El rey está en jaque
+El rey pasaría por una casilla atacada
+Solución: Verifica todas las condiciones del enroque
 
-2. **Compila y ejecuta el servidor:**
-   ```bash
-   javac ServidorAjedrez.java
-   java ServidorAjedrez
-   ```
+"Las imágenes no aparecen"
+Causa: Carpeta de recursos mal ubicada Solución: Asegúrate de que la carpeta resources/ esté en la ubicación correcta
 
-3. **Verifica que el servidor esté funcionando:**
-   - Deberías ver: `🎯 Servidor de Ajedrez iniciado en puerto 9090`
-   - Servidor disponible en: `http://localhost:9090`
+"El juego se cierra inesperadamente"
+Causa: Error en el código Solución: Ejecuta desde un IDE para ver los mensajes de error
 
-### 2. Abrir el Frontend
+Reglas Básicas del Ajedrez
+Objetivo
+Ganar: Dar jaque mate al rey enemigo
+Empate: Situaciones de tablas (no implementado aún)
+Movimiento de Piezas
+Peón
+Adelante: 1 casilla (2 en primer movimiento)
+Captura: 1 casilla en diagonal
+Especial: Coronación al llegar al final
+Torre
+Movimiento: Horizontal y vertical, cualquier distancia
+Captura: Igual que movimiento
+Especial: Participa en el enroque
+Caballo
+Movimiento: En "L" (2+1 o 1+2 casillas)
+Único: Puede saltar sobre otras piezas
+Captura: En la casilla de destino
+Alfil
+Movimiento: Diagonal, cualquier distancia
+Limitación: Solo casillas del mismo color
+Captura: Igual que movimiento
+Reina
+Movimiento: Combinación de torre + alfil
+Más poderosa: La pieza más versátil
+Captura: Igual que movimiento
+Rey
+Movimiento: 1 casilla en cualquier dirección
+Especial: Enroque (con condiciones)
+Importante: No puede moverse a jaque
+Consejos y Estrategias
+Para Principiantes
+Aprende el valor de cada pieza:
 
-1. **Navega a la carpeta del frontend:**
-   ```bash
-   cd "Prototipo ajedrez/frontend"
-   ```
+Peón = 1 punto
+Caballo/Alfil = 3 puntos
+Torre = 5 puntos
+Reina = 9 puntos
+Rey = invaluable
+Principios de apertura:
 
-2. **Abre en tu navegador:**
-   - Doble clic en `index.html` o `modoJuego.html`
-   - O usa Live Server en VS Code para mejor experiencia
+Desarrolla piezas menores primero
+Controla el centro
+Enroca temprano para proteger al rey
+Táctica básica:
 
-### 3. ¡A Jugar! 🎮
-
-1. **Selecciona modo de juego:**
-   - **👥 Jugar con un amigo:** Partidas entre dos humanos
-   - **🤖 Jugar contra bot:** Con dificultad Principiante o Intermedio
-
-2. **En el tablero:**
-   - Click en una pieza para seleccionar
-   - Click en destino para mover
-   - Todas las reglas del ajedrez están implementadas
-
-## 🔧 Arquitectura Técnica
-
-### Backend (Java) - ServidorAjedrez.java
-- **Servidor HTTP** standalone en puerto 9090
-- **API REST completa** con endpoints principales:
-  - `GET /api/estado` - Estado actual del juego
-  - `POST /api/mover` - Realizar movimiento
-  - `POST /api/reiniciar` - Reiniciar partida
-  - `GET /api/configurar` - Configurar modo y dificultad
-- **Lógica completa del ajedrez** con validación de movimientos
-- **IA del bot** con dos niveles:
-  - Principiante: Movimientos aleatorios válidos
-  - Intermedio: Estrategia básica con evaluación de posiciones
-- **Detección de jaque, jaque mate y tablas**
-- **Soporte CORS** para frontend web
-
-### Frontend (HTML/CSS/JavaScript)
-- **Interfaz moderna** con diseño responsive y atractivo
-- **Tablero interactivo** de 8x8 con piezas Unicode
-- **Comunicación HTTP** asíncrona con el servidor
-- **Gestión de estados** en tiempo real
-- **Selección visual** de piezas y movimientos válidos
-- **Soporte completo** para ambos modos de juego
-- **Manejo de errores** y reconexión automática
-
-## 📡 API Endpoints del Servidor
-
-| Método | Endpoint | Descripción | Parámetros |
-|--------|----------|-------------|------------|
-| GET | `/api/estado` | Obtiene estado actual del juego | Ninguno |
-| POST | `/api/mover` | Realiza un movimiento | `{"desde": {"fila": 0, "columna": 0}, "hacia": {"fila": 1, "columna": 1}}` |
-| POST | `/api/reiniciar` | Reinicia el juego | Ninguno |
-| GET | `/api/configurar` | Configura modo y dificultad | `?modo=amigo&nivel=principiante` |
-| OPTIONS | `/*` | Soporte CORS | Headers CORS |
-
-## 🎯 Reglas Implementadas
-
-- ✅ **Movimientos básicos** de todas las piezas
-- ✅ **Enroque** (corto y largo)
-- ✅ **Captura en pasada** (en passant)
-- ✅ **Promoción de peones**
-- ✅ **Detección de jaque y jaque mate**
-- ✅ **Detección de tablas** (empate)
-- ✅ **Validación de movimientos legales**
-- ✅ **Prevención de auto-jaque**
-
-## 🤖 Inteligencia Artificial
-
-### Nivel Principiante
-- Movimientos completamente aleatorios
-- Solo considera movimientos válidos
-- Ideal para jugadores nuevos
-
-### Nivel Intermedio  
-- Evaluación básica de posiciones
-- Considera capturas valiosas
-- Evita movimientos peligrosos
-- Estrategia defensiva básica
-
-## 📁 Estructura de Archivos
-
-```
-chess-game-3/
-├── README.md
-├── Documentacion.md
-└── Prototipo ajedrez/
-    ├── backend/
-    │   ├── ServidorAjedrez.java    # Servidor principal con lógica completa
-    │   └── TestServidor.java       # Servidor de pruebas simple
-    └── frontend/
-        ├── index.html              # Página de inicio
-        ├── index.css              # Estilos de inicio
-        ├── modoJuego.html         # Selección de modo de juego
-        ├── modoJuego.css          # Estilos de selección
-        ├── tablero.html           # Interfaz del tablero
-        ├── tablero.css            # Estilos del tablero
-        ├── main.js                # Lógica de navegación
-        └── tablero.js             # Lógica principal del juego
-```
-
-## � Solución de Problemas
-
-### El servidor no inicia
-- Verifica que el puerto 9090 esté libre
-- Asegúrate de tener Java instalado (versión 8 o superior)
-
-### Las piezas no aparecen
-- Verifica que el servidor esté corriendo
-- Abre la consola del navegador para ver errores
-- Revisa la conexión a `http://localhost:9090`
-
-### Los movimientos no funcionan
-- Confirma que el servidor esté respondiendo en `/api/estado`
-- Verifica la consola del navegador para errores CORS
-- Reinicia el servidor si es necesario
-
-## 🎮 ¡Comienza a Jugar!
-
-1. **Ejecuta el servidor:** `java ServidorAjedrez`
-2. **Abre el juego:** Doble clic en `modoJuego.html`
-3. **Selecciona modo:** Amigo o Bot con dificultad
-4. **¡Disfruta jugando ajedrez!** ♔♕♖♗♘♙
-
----
-
-**Desarrollado usando Java y JavaScript vanilla**
-
-- `GET /api/estado` - Obtener estado actual del juego
-- `POST /api/mover` - Realizar un movimiento
-- `POST /api/reiniciar` - Reiniciar el juego
-
-## 🎯 Flujo del Juego
-
-1. El frontend se conecta al servidor Java
-2. El servidor mantiene el estado del tablero y la lógica del juego
-3. Cada movimiento se envía al servidor para validación
-4. El servidor responde con el nuevo estado del juego
-5. El frontend actualiza la interfaz automáticamente
-
-## 🛠️ Requisitos
-
-- **Java 8 o superior**
-- **Navegador web moderno** (Chrome, Firefox, Safari, Edge)
-- **Conexión a internet** no requerida (funciona localmente)
-
-## 🎮 ¡Disfruta jugando ajedrez!
+Busca capturas "gratis"
+Protege tus piezas
+Ataca piezas no defendidas
+Contra el Bot
+Sé paciente: El bot cometerá errores
+Desarrolla rápido: Saca tus piezas del fondo
+Busca táctica: Ataques dobles, clavadas, etc.
+Final de juego: Aprende mates básicos
+¡¡¡Que tengas excelentes partidas!!!
