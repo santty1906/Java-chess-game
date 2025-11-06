@@ -44,9 +44,10 @@ Santiago Lopez and the project team of class group 1SF125, Technological Univers
 ---
 
 ## 🚀 Installation & Project Execution
+Follow these steps to clone the repository and start the application:
 
-1️⃣ Clone the repository:
 ```bash
+1️⃣ Clone the repository:
 git clone https://github.com/santty1906/Java-chess-game.git
 cd Java-chess-game
 
