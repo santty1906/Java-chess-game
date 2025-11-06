@@ -47,16 +47,16 @@ Santiago Lopez and the project team of class group 1SF125, Technological Univers
 Follow these steps to clone the repository and start the application:
 
 ```bash
-1️⃣ Clone the repository:
+# 1️⃣ Clone the repository:
 git clone https://github.com/santty1906/Java-chess-game.git
 cd Java-chess-game
 
 
-2️⃣ Compile the Java source files:
+# 2️⃣ Compile the Java source files:
 cd src
 javac *.java
 
 
-3️⃣ Run the main program with resources visible:
+# 3️⃣ Run the main program with resources visible:
 cd ..
 java -cp src Main
