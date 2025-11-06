@@ -49,7 +49,7 @@ Follow these steps to clone the repository and start the application:
 ```bash
 # 1️⃣ Clone the repository:
 git clone https://github.com/santty1906/Java-chess-game.git
-cd Java-chess-game
+cd Java-chess-game/AjedrezJava
 
 
 # 2️⃣ Compile the Java source files:
