@@ -27,7 +27,23 @@ The board includes **valid moves**, **piece capturing**, **pawn promotion**, **c
 
 ---
 
-## 🚀 Installation & Execution
+## 👥 Key Files
+
+* `Main.java` → Initial presentation and menu access.
+* `MenuJuego.java` → Main menu with game options.
+* `TableroAjedrez.java` → Board logic, moves, and special rules.
+* `ValidadorMovimiento.java` → Validates legal piece movements.
+* `BotFacil.java` → Simple bot logic.
+* `resources/` → Piece and logo images.
+
+---
+
+## 👥 Author
+Santiago Lopez and the project team of class group 1SF125, Technological University of Panama.
+
+---
+
+## 🚀 Installation & Project Execution
 
 1️⃣ Clone the repository:
 ```bash
@@ -44,14 +60,3 @@ javac *.java
 ```bash
 java Main
 ```
-
----
-
-## 👥 Key Files
-
-* `Main.java` → Initial presentation and menu access.
-* `MenuJuego.java` → Main menu with game options.
-* `TableroAjedrez.java` → Board logic, moves, and special rules.
-* `ValidadorMovimiento.java` → Validates legal piece movements.
-* `BotFacil.java` → Simple bot logic.
-* `resources/` → Piece and logo images.
